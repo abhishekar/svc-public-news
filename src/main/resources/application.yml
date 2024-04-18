@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: "Service for News from public news API's"
