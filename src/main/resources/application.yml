@@ -1,3 +1,12 @@
 spring:
   application:
     name: "Service for News from public news API's"
+server:
+  port: 9732
+  servlet:
+    context-path: /newsapi
+news:
+  api:
+    url: https://gnews.io/api/v4
+    key: your-news-api-key-here
+
