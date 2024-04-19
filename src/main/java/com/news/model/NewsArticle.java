@@ -12,8 +12,6 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NewsArticle {
 
-    @JsonProperty("author")
-    private String author;
     @JsonProperty("title")
     private String title;
     @JsonProperty("description")
@@ -26,5 +24,7 @@ public class NewsArticle {
     private String image;
     @JsonProperty("publishedAt")
     private String publishedAt;
+    @JsonProperty("source")
+    private Source source;
 
 }

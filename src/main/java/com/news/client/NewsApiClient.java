@@ -12,11 +12,11 @@ public interface NewsApiClient {
     @GetMapping("/top-headlines")
     ApiResponse getTopHeadlines(@RequestParam(name = "q") String keyword,
                                 @RequestParam(name = "max") Integer max,
-                                @RequestParam(name = "apiKey") String apiKey);
+                                @RequestParam(name = "apikey") String apiKey);
 
     @GetMapping("/search")
     ApiResponse searchArticles(@RequestParam(name = "q") String keyword,
                                @RequestParam(name = "max") Integer max,
-                            @RequestParam(name = "apiKey") String apiKey);
+                            @RequestParam(name = "apikey") String apiKey);
 
 }

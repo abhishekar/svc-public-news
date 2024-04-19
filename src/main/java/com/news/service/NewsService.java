@@ -20,7 +20,7 @@ public class NewsService {
     @Cacheable(cacheNames = "latestArticles", unless = "#count == null")
     public ApiResponse getLatestArticles(Integer count) {
         if (count == null) {
-            count = 10; // Set a default value if count is not provided
+            count = 10;
         }
         return newsRepository.getLatestArticles(count);
     }
