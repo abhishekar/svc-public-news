@@ -26,10 +26,9 @@ public class NewsController {
 
     @GetMapping("/search")
     public ResponseEntity<List<NewsArticle>> searchArticles(
-            @RequestParam(name = "title", required = false) String title,
-            @RequestParam(name = "author", required = false) String author,
-            @RequestParam(name = "keyword", required = false) String keyword) {
-        ApiResponse apiResponse = newsService.searchArticles(title, author, keyword);
+            @RequestParam(name = "keyword") String keyword,
+            @RequestParam(name = "count", required = false) Integer count) {
+        ApiResponse apiResponse = newsService.searchArticles(keyword,count);
         return ResponseEntity.ok(apiResponse.articles);
     }
 

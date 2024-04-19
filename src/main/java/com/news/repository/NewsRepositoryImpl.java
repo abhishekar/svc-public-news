@@ -18,12 +18,12 @@ public class NewsRepositoryImpl implements NewsRepository {
     }
 
     @Override
-    public ApiResponse getLatestArticles(int max) {
+    public ApiResponse getLatestArticles(Integer max) {
         return newsApiClient.getTopHeadlines(null,max,newsApiKey);
     }
 
     @Override
-    public ApiResponse searchArticles(String title, String author, String keyword) {
-        return newsApiClient.searchArticles(keyword,20,newsApiKey);
+    public ApiResponse searchArticles(String keyword, Integer max) {
+        return newsApiClient.searchArticles(keyword,max,newsApiKey);
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NewsRepository {
 
-    ApiResponse getLatestArticles(int count);
-    ApiResponse searchArticles(String title, String author, String keyword);
+    ApiResponse getLatestArticles(Integer count);
+    ApiResponse searchArticles(String keyword, Integer count);
 
 }

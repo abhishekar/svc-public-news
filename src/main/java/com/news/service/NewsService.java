@@ -17,7 +17,7 @@ public class NewsService {
         this.newsRepository = newsRepository;
     }
 
-    @Cacheable(cacheNames = "latestArticles", unless = "#count == null")
+    @Cacheable(cacheNames = "latestArticles")
     public ApiResponse getLatestArticles(Integer count) {
         if (count == null) {
             count = 10;
@@ -25,8 +25,11 @@ public class NewsService {
         return newsRepository.getLatestArticles(count);
     }
 
-    @Cacheable(cacheNames = "searchArticles", unless = "#title == null && #author == null && #keyword == null")
-    public ApiResponse searchArticles(String title, String author, String keyword) {
-        return newsRepository.searchArticles(title, author, keyword);
+    @Cacheable(cacheNames = "searchArticles")
+    public ApiResponse searchArticles(String keyword, Integer count) {
+        if (count == null) {
+            count = 10;
+        }
+        return newsRepository.searchArticles(keyword, count);
     }
 }
