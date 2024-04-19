@@ -1,5 +1,6 @@
 package com.news.service;
 
+import com.news.model.ApiResponse;
 import com.news.model.NewsArticle;
 import com.news.repository.NewsRepository;
 import org.springframework.cache.annotation.Cacheable;
@@ -17,7 +18,7 @@ public class NewsService {
     }
 
     @Cacheable(cacheNames = "latestArticles", unless = "#count == null")
-    public List<NewsArticle> getLatestArticles(Integer count) {
+    public ApiResponse getLatestArticles(Integer count) {
         if (count == null) {
             count = 10; // Set a default value if count is not provided
         }
@@ -25,7 +26,7 @@ public class NewsService {
     }
 
     @Cacheable(cacheNames = "searchArticles", unless = "#title == null && #author == null && #keyword == null")
-    public List<NewsArticle> searchArticles(String title, String author, String keyword) {
+    public ApiResponse searchArticles(String title, String author, String keyword) {
         return newsRepository.searchArticles(title, author, keyword);
     }
 }

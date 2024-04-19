@@ -1,17 +1,15 @@
 package com.news.controller;
 
+import com.news.model.ApiResponse;
 import com.news.model.NewsArticle;
 import com.news.service.NewsService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/articles")
+@RequestMapping("/v1/articles")
 public class NewsController {
 
     private final NewsService newsService;
@@ -22,8 +20,8 @@ public class NewsController {
 
     @GetMapping
     public ResponseEntity<List<NewsArticle>> getLatestArticles(@RequestParam(name = "count", required = false) Integer count) {
-        List<NewsArticle> articles = newsService.getLatestArticles(count);
-        return ResponseEntity.ok(articles);
+        ApiResponse apiResponse = newsService.getLatestArticles(count);
+        return ResponseEntity.ok(apiResponse.articles);
     }
 
     @GetMapping("/search")
@@ -31,8 +29,8 @@ public class NewsController {
             @RequestParam(name = "title", required = false) String title,
             @RequestParam(name = "author", required = false) String author,
             @RequestParam(name = "keyword", required = false) String keyword) {
-        List<NewsArticle> articles = newsService.searchArticles(title, author, keyword);
-        return ResponseEntity.ok(articles);
+        ApiResponse apiResponse = newsService.searchArticles(title, author, keyword);
+        return ResponseEntity.ok(apiResponse.articles);
     }
 
 }
